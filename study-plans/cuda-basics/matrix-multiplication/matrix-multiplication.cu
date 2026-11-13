@@ -11,7 +11,6 @@ __global__ void matmul_kernel(const float* A, const float* B, float* C, int M, i
         }
         C[i * N + j] = v;
     }
-    
 }
 
 extern "C" void solve(const float* A, const float* B, float* C, int M, int N, int K) {
