@@ -8,6 +8,5 @@ def zscore_standardize(X: list, axis: int = 0, eps: float = 1e-12) -> np.ndarray
 
     means = X.mean(axis=axis, keepdims=True)
     stds = X.std(axis=axis, keepdims=True)
-    stds = np.where(stds > eps, stds, 1.0)
 
-    return (X - means) / stds
+    return (X - means) / np.where(stds > eps, stds, 1.0)
