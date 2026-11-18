@@ -9,7 +9,6 @@ def pca_projection(X: list, k: int) -> list:
     cov = (centered.T @ centered) / (X.shape[0] - 1)
 
     eigenvalues, eigenvectors = np.linalg.eigh(cov)
-    indices = np.argsort(eigenvalues)[::-1][:k]
-    eigenvectors = eigenvectors[:, indices]
+    W = eigenvectors[:, ::-1][:, :k]
 
-    return centered @ eigenvectors
+    return centered @ W
