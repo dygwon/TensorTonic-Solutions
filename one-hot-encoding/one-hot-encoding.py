@@ -4,10 +4,7 @@ def one_hot(y: list, num_classes=None) -> np.ndarray:
     """
     Returns a NumPy array with shape (N, K).
     """
-    if num_classes is None:
-        k = max(y) + 1
-    else:
-        k = num_classes
+    k = max(y) + 1 if num_classes is None else num_classes
 
     y = np.asarray(y, dtype=np.int64)
     encoded = np.zeros((len(y), k), dtype=np.float64)
