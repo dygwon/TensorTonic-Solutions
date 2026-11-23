@@ -9,11 +9,8 @@ def one_hot(y: list, num_classes=None) -> np.ndarray:
     else:
         k = num_classes
 
-    res = []
-    for yi in y:
-        row = np.zeros(k)
-        row[yi] = 1.0
-
-        res.append(row)
-
-    return np.array(res, dtype=np.float64)
+    y = np.asarray(y, dtype=np.int64)
+    encoded = np.zeros((len(y), k), dtype=np.float64)
+    encoded[np.arange(len(y)), y] = 1.0
+    
+    return encoded
